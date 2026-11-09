@@ -17,6 +17,12 @@ El desbordamiento de `int` con signo es **comportamiento indefinido** en C.
   complemento a dos y lo marca con `ub = 1`. Es una elección del modelo, no
   una afirmación sobre lo que emite un compilador.
 
+**8fbbf55, observación no verificada:** en el modelo, `post` sigue
+calculando `size + len + 1` en `int` (caso `x07`: `UB_STOP` en C11,
+`CUR_RET` en wrap32). Es una **observación no verificada** del modelo, no
+un hallazgo: no se reprodujo contra un build de libxml2, y master agrega la
+comprobación `size > INT_MAX - len`.
+
 ## Uso
 
 ```sh

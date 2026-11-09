@@ -28,6 +28,12 @@ assumes a wrap silently:
 | `x05` cur > 2 GiB, len = INT_MAX | wrap32: `OOB_WRITE` at a negative offset; c11: `UB_STOP` | `NULL_RET` (wrap32), `UB_STOP` (c11) | `LOSSY`: strlen saturates to 0, memory-safe |
 | `x07` size + len > INT_MAX, no strlen wrap | wrap32: `CUR_RET`; c11: `UB_STOP` | same as pre | `OK`, checked with `size > INT_MAX - len` |
 
+**8fbbf55, unverified observation:** in the model, `post` still computes
+`size + len + 1` in `int` (case `x07`: `UB_STOP` in C11, `CUR_RET` in
+wrap32). This is an **unverified observation** about the model, not a
+finding: it was not reproduced against a libxml2 build, and master adds
+the `size > INT_MAX - len` check. See [LIMITATIONS.md](LIMITATIONS.md).
+
 On a boundary grid (`tests/test_model.c`): every `OOB_WRITE` needs a signed
 overflow first; post and master have no `OOB_WRITE` even in the wrap
 variant; master has no signed overflow on any path.
