@@ -1,0 +1,7 @@
+function,version,cases,OK,LOSSY,NULL_RET,CUR_RET,DUP_STR1,NDUP_FALLBACK,OOB_WRITE,ALLOC_ZERO,c11_ub_stop,oob_without_ub
+xmlStrncat,pre,78,24,9,13,23,0,0,6,3,41,0
+xmlStrncat,post,78,24,9,29,16,0,0,0,0,41,0
+xmlStrncat,master,78,26,28,24,0,0,0,0,0,0,0
+xmlStrncatNew,pre,247,24,32,30,0,52,65,32,12,197,0
+xmlStrncatNew,post,247,24,32,96,0,52,43,0,0,197,0
+xmlStrncatNew,master,247,26,70,34,0,117,0,0,0,0,0

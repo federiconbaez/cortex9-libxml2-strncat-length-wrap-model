@@ -1,0 +1,13 @@
+# id	function	len1	len2	len_arg	(len2 = true length of add/str2)
+x01_small	strncat	10	5	5
+x02_len_zero	strncat	10	0	0
+x03_len_negative	strncat	10	0	-1
+x04_cur_2g_add_small	strncat	2147483658	10	10
+x05_cur_2g_add_2g	strncat	2147483658	2147483647	2147483647
+x06_cur_4g_plus_5	strncat	4294967301	10	10
+x07_sum_overflow_no_wrap	strncat	2147483637	10	10
+x08_new_small	strncatnew	10	5	-1
+x09_new_str2_2g_auto	strncatnew	10	2147483658	-1
+x10_new_both_2g	strncatnew	2147483658	2147483647	2147483647
+x11_new_both_2g_auto	strncatnew	2147483658	2147483647	-1
+x12_new_str1_4g	strncatnew	4294967301	10	-1
